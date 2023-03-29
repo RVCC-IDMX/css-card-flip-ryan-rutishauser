@@ -3,7 +3,7 @@
 @use "../base/typography" as type;
 
 @font-face{
-  font-family: "Tilt Prism";
+  font-family: 'Tilt Prism';
   font-weight: 400;
   src: url('../../fonts/tiltprism-regular-variablefont_xrotyrot-webfont.woff2') format('woff2'),
        url('../../fonts/tiltprism-regular-variablefont_xrotyrot-webfont.woff') format('woff');
@@ -87,7 +87,8 @@ body {
   left: 80px;
   text-align: center;
   order: 2;
-  font-family: "Tilt Prism";
+  font-family: 'Tilt Prism', sans-serif;
+  font-weight: 400;
 }
 
 .card__body {
