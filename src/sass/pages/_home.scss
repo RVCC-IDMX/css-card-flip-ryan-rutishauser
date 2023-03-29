@@ -12,8 +12,7 @@
   --level-one: translateZ(3rem);
   --level-two: translateZ(6rem);
   --level-three: translateZ(9rem);
-  
-  --clr: #b7c9e5;
+  --clr: #e8e8e8;
 }
 
 *, *::before, *::after {
@@ -30,6 +29,8 @@ body {
 
 .card {
   width: 400px;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
 .card__content {
@@ -38,10 +39,6 @@ body {
   padding: 15em 5em;
   transition: transform 3s;
   transform-style: preserve-3d;
-}
-
-.card:hover .card__content {
-  transform: rotateY(.5turn);
 }
 
 .card__front,
@@ -61,46 +58,67 @@ body {
 .card__front {
   background-color: var(--clr);
   background-image: url('../../images/apple_pie_300.jpg');
-  background-size: contain;
-  color: #333;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: -50px;
+  background-repeat: no-repeat;
+  color: hsl(37, 82, 10);
+  border-radius: 5px;
 }
 
 .card__front::before {
   content: '';
   position: absolute;
+  bottom: 0px;
   --spacer: 0em;
+  padding-top: 150px;
   left: var(--spacer);
   right: var(--spacer);
-  border: 6px solid;
-  transform: var(--level-one);
-  transform: translateY(400px);
+  border: none;
+  background: linear-gradient(hsl(37 82% 80%/ 0),
+    hsl(37 82% 80%/ 0.5),
+    hsl(37 82% 80%/ 1));
 }
 
 .card__title {
   font-size: 3.5rem;
-  transform: var(--level-three);
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  text-align: center;
   order: 2;
   font-family: "Tilt Prism";
 }
 
-.card__subtitle {
-  transform: var(--level-two);
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: .75rem;
-  opacity: .7;
-}
-
 .card__body {
-  transform: var(--level-two);
   font-size: 1.5rem;
   line-height: 1.6;
+  text-align: left;
+  list-style-type: none;
 }
 
-
-
 .card__back {
-  transform: rotateY(.5turn);
   color: var(--clr);
-  background: #333;
+  background: hsl(37, 82, 10);
+  border-radius: 5px;
+}
+@media not (prefers-reduced-motion){
+  @media (hover){
+  .card:hover .card__content {
+    transform: rotateY(.5turn);
+  }
+  .card__front::before {
+  content: '';
+  transform: var(--level-one);
+  }
+  .card__title {
+  transform: var(--level-three);
+  }
+  .card__body {
+  transform: var(--level-two);
+  }
+  .card__back {
+  transform: rotateY(.5turn);
+  }
+  }
 }
